@@ -4,127 +4,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Box with Icons</title>
+  <title>Dashboard</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  
   <style>
     body {
-      background-image: url('กุ้งฝอยๆ.jpg'); /* ใส่ URL ของรูปภาพ */
-      background-size: cover; /* ปรับขนาดรูปภาพให้ครอบคลุมทั้งพื้นที่ */
-      background-position: center center; /* จัดตำแหน่งของรูปภาพให้ตรงกลาง */
-      background-attachment: fixed; /* ทำให้รูปภาพไม่เลื่อนเมื่อเลื่อนหน้าจอ */
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
 
     .box {
-      background-color: #f0f0f0;
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       padding: 20px;
-      color: #333;
-      box-shadow: rgba(50, 50, 93, 0.3) 0px 50px 100px -20px,
-        rgba(0, 0, 0, 0.2) 0px 30px 60px -30px,
-        rgba(10, 37, 64, 0.5) 0px -2px 6px 0px inset;
-      position: absolute;
-      min-height: 50px;
-      font-family: 'Arial', sans-serif;
-      line-height: 1.5;
-      border-radius: 20px;
-      text-align: left;
-      border: 2px solid black;
-      padding: 20px;
-      margin: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .box.small-box {
-      font-size: 25px;
-      width: 250px;
-      height: 80px;
-      text-align: left;
+    .box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
 
-    .large-box {
-      width: 350px;
-      height: 100px;
+    .box i {
+      font-size: 40px;
+      margin-bottom: 10px;
+      color: #4facfe;
     }
 
-    #box1 {
-      top: 50px;
-      left: 785px;
-      width: 315px;
-      background-color: #f69988;
-      font-size: 45px;
-      backdrop-filter: blur(10px);
+    .box h3 {
+      font-size: 24px;
+      margin: 10px 0;
     }
 
-    #box2 {
-      top: 200px;
-      left: 289px;
-      width: 290px;
-      height: 50px;
-      background-color: #b3e5fc;
-      font-size: 35px;
-    }
-
-    #box3 {
-      top: 320px;
-      left: 195px;
-      width: 460px;
-      height: 120px;
-      background-color: #f36c60;
-      font-size: 45px;
-    }
-
-    #box4 {
-      top: 320px;
-      left: 1160px;
-      width: 500px;
-      height: 110px;
-      background-color: #f36c60;
-      font-size: 36px;
-    }
-
-    #box5 {
-      top: 520px;
-      left: 815px;
-      width: 220px;
-      height: 50px;
-      background-color: #738ffe;
-      font-size: 33px;
-    }
-
-    #box7 {
-      top: 645px;
-      left: 690px;
-      width: 460px;
-      height: 53px;
-      background-color: #f36c60;
-      font-size: 36px;
-    }
-
-    #box9 {
-      top: 200px;
-      left: 1250px;
-      width: 336px;
-      height: 50px;
-      background-color: #ffcc80;
-      font-size: 35px;
-    }
-
-    .unit {
-      float: right;
-      margin-right: 10px;
-    }
-
-    .data-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 5px;
+    .box p {
+      font-size: 18px;
+      color: #666;
     }
 
     .settings-button {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: #f69988;
+      background-color: #ff7d68;
       color: #fff;
       border: none;
       border-radius: 50%;
@@ -140,84 +77,81 @@
     }
 
     .settings-button:hover {
-      background-color: #ff7d68;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      background-color: #ff5733;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .box h3 {
+        font-size: 20px;
+      }
+
+      .box p {
+        font-size: 16px;
+      }
+
+      .settings-button {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- Box1 -->
-  <div id="box1" class="box small-box"> <i class="fas fa-shrimp"></i>Shrimp Pond</div>
-  <!-- Box2 -->
-  <div id="box2" class="box small-box">Air Temp/Humidity</div>
-  <!-- Box3 -->
-  <div id="box3" class="box large-box">
-    <i class="fas fa-temperature-high"></i> Temp : <span id="temperatureValue">--</span><span class="unit">°C</span><br>
-    <i class="fas fa-tint"></i> Humidity : <span id="humidityValue">--</span><span class="unit">%</span>
-  </div>
-  <!-- Box4 -->
-  <div id="box4" class="box large-box"><i class="fas fa-water"></i>Temp Water IN : <span
-      id="waterTempValue">--</span><span class="unit">°C</span><br>
-    <i class="fas fa-water"></i> Temp Water OUT : <span id="evapWaterTempValue">--</span><span class="unit">°C</span>
-  </div>
-  <!-- Box5 -->
-  <div id="box5" class="box small-box">Temp In Water</span>
-  </div>
-
-  <!-- Box7 -->
-  <div id="box7" class="box">
-    <i class="fas fa-water"></i> Temp Water : <span id="waterTempValue">0</span><span class="unit">°C</span><br>
-  </div>
-
-  <!-- Box9 -->
-  <div id="box9" class="box small-box">Temp Water Collector
-  </div>
-  <div class="box small">
-    <i class="fas fa-calendar-alt"></i> Date: <span id="dateValue"></span><br>
-    <i class="fas fa-clock"></i> Time: <span id="timeValue"></span>
+  <div class="container">
+    <div class="box">
+      <i class="fas fa-shrimp"></i>
+      <h3>Shrimp Pond</h3>
+      <p>Monitoring the health of the pond</p>
+    </div>
+    <div class="box">
+      <i class="fas fa-calendar-alt"></i>
+      <h3>Date & Time</h3>
+      <p>Date: <span id="dateValue">--</span><br>Time: <span id="timeValue">--</span></p>
+    </div>
+    <div class="box">
+      <i class="fas fa-thermometer-half"></i>
+      <h3>Air Temp & Humidity</h3>
+      <p>Temp: <span id="temperatureValue">--</span>°C<br>Humidity: <span id="humidityValue">--</span>%</p>
+    </div>
+    <div class="box">
+      <i class="fas fa-water"></i>
+      <h3>Water Temperature</h3>
+      <p>IN: <span id="waterTempValue">--</span>°C<br>OUT: <span id="evapWaterTempValue">--</span>°C</p>
+    </div>
+    <div class="box">
+      <i class="fas fa-temperature-low"></i>
+      <h3>Temp In Water</h3>
+      <p>Temp: <span id="tempInWater">--</span>°C</p>
+    </div>
+    <!-- New box for electrical values -->
+    <div class="box">
+      <i class="fas fa-bolt"></i>
+      <h3>Electrical Metrics</h3>
+      <p>Volts: <span id="voltageValue">--</span> V</p>
+      <p>Amps: <span id="currentValue">--</span> A</p>
+      <p>Watts: <span id="powerValue">--</span> W</p>
+    </div>
   </div>
 
   <!-- Settings Button -->
-  <a id="settingsButton" class="settings-button" href="settings.html" target="_self">
+  <button class="settings-button" onclick="goToSettings()">
     <i class="fas fa-cog"></i>
-  </a>
+  </button>
 
   <script>
-    async function fetchData() {
-      try {
-        // จำลองการดึงข้อมูลจาก API หรือเซนเซอร์
-        const response = await fetch('/api/data'); // เปลี่ยน URL เป็น API จริงของคุณ
-        const data = await response.json();
-
-        // ตรวจสอบว่าเซนเซอร์ทำงานหรือไม่
-        const isSensorConnected = data.sensorStatus === 'connected'; // ตรวจสอบสถานะเซนเซอร์
-        const isSensorError = data.sensorStatus === 'error'; // ตรวจสอบว่ามีข้อผิดพลาด
-
-        // อัปเดตค่าบนหน้าเว็บ
-        document.getElementById('temperatureValue').textContent =
-          isSensorConnected && !isSensorError ? data.temperature || '--' : '--';
-        document.getElementById('humidityValue').textContent =
-          isSensorConnected && !isSensorError ? data.humidity || '--' : '--';
-        document.getElementById('waterTempValue').textContent =
-          isSensorConnected && !isSensorError ? data.waterTemp || '--' : '--';
-        document.getElementById('evapWaterTempValue').textContent =
-          isSensorConnected && !isSensorError ? data.evapWaterTemp || '--' : '--';
-      } catch (error) {
-        // กรณีมีข้อผิดพลาดในการดึงข้อมูลจาก API
-        console.error('Error fetching data:', error);
-        document.getElementById('temperatureValue').textContent = '--';
-        document.getElementById('humidityValue').textContent = '--';
-        document.getElementById('waterTempValue').textContent = '--';
-        document.getElementById('evapWaterTempValue').textContent = '--';
-      }
+    function goToSettings() {
+      console.log("Button clicked"); // ตรวจสอบว่าเรียกฟังก์ชันได้หรือไม่
+      window.location.href = "settings.html"; // ไปยังหน้า settings.html
     }
 
     function displayDateTime() {
       const date = new Date();
       const day = String(date.getDate()).padStart(2, '0');
       const monthIndex = date.getMonth();
-      const year = date.getFullYear() + 543;
+      const year = date.getFullYear() + 543; // For Thai calendar
       const monthsInThai = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
       const currentDate = `${day} ${monthsInThai[monthIndex]} ${year}`;
       const currentTime = date.toLocaleTimeString();
@@ -226,10 +160,18 @@
       document.getElementById('timeValue').textContent = currentTime;
     }
 
-    setInterval(() => {
-      fetchData();
-      displayDateTime();
-    }, 10000); // Update every 10 seconds
+    function updateElectricalMetrics() {
+      const voltage = 230; // Example voltage
+      const current = 5; // Example current
+      const power = voltage * current; // Example power calculation
+
+      document.getElementById('voltageValue').textContent = voltage.toFixed(2);
+      document.getElementById('currentValue').textContent = current.toFixed(2);
+      document.getElementById('powerValue').textContent = power.toFixed(2);
+    }
+
+    setInterval(displayDateTime, 1000);
+    setInterval(updateElectricalMetrics, 1000);
   </script>
 </body>
 
